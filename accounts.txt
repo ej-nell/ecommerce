@@ -1,0 +1,7 @@
+// ADMIN ACCOUNT
+username: admin@mail.com
+password: 1234
+
+// REGULAR USER ACCOUNT
+username: user1@mail.com
+password: 1234
