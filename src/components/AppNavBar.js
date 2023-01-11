@@ -11,7 +11,7 @@ export default function AppNavBar() {
     <Navbar bg="light" expand="lg" className="vw-100">
       <Container>
         <Navbar.Brand as={NavLink} to="/">
-          Trading Card Collectibles
+          Pristine Paper
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
