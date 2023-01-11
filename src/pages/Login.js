@@ -51,7 +51,7 @@ export default function Login() {
           });
         } else {
           Swal.fire({
-            title: "Authentication failed",
+            title: "Incorrect email/password",
             icon: "error",
             text: "Please try again.",
           });

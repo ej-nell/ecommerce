@@ -5,6 +5,7 @@ import { useEffect, useState, useContext } from "react";
 import { Navigate } from "react-router-dom";
 
 import UserContext from "../UserContext";
+import Swal from "sweetalert2";
 
 export default function Register() {
   // State hooks to store values of the input field from our user
@@ -27,13 +28,43 @@ export default function Register() {
 
   function registerUser(event) {
     event.preventDefault();
-    alert(`Congratulations! Registration successful.`);
-    setEmail("");
-    setPassword1("");
-    setPassword2("");
+    // alert(`Congratulations! Registration successful.`);
+    // setEmail("");
+    // setPassword1("");
+    // setPassword2("");
 
-    localStorage.setItem("email", email);
-    setUser(localStorage.getItem("email"));
+    fetch(`${process.env.REACT_APP_URI}/users/register`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        email: email,
+        password: password1,
+        verifyPassword: password2,
+      }),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+        if (!data) {
+          Swal.fire({
+            title: "Email address is already used. ",
+            icon: "error",
+            text: "Please use different email.",
+          });
+        } else {
+          Swal.fire({
+            title: "Successfully registered!",
+            icon: "success",
+            text: "Welcome to Zuitt Coding Website",
+          });
+          <Navigate to="/" />;
+
+          localStorage.setItem("email", email);
+          setUser(localStorage.getItem("email"));
+        }
+      });
   }
 
   return user.id !== null ? (
