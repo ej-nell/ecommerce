@@ -23,17 +23,17 @@ function App() {
     console.log(user);
   }, [user]);
 
-  useEffect(() => {
-    fetch(`${process.env.REACT_APP_URI}/users/profile`, {
-      headers: {
-        Authorization: `Bearer ${localStorage.getItem("token")}`,
-      },
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        setUser({ id: data._id, isAdmin: data.isAdmin });
-      });
-  }, []);
+  // useEffect(() => {
+  //   fetch(`${process.env.REACT_APP_URI}/users/profile`, {
+  //     headers: {
+  //       Authorization: `Bearer ${localStorage.getItem("token")}`,
+  //     },
+  //   })
+  //     .then((response) => response.json())
+  //     .then((data) => {
+  //       setUser({ id: data._id, isAdmin: data.isAdmin });
+  //     });
+  // }, []);
 
   return (
     <UserProvider value={{ user, setUser, unSetUser }}>

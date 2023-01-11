@@ -11,18 +11,34 @@ export default function AppNavBar() {
     <Navbar bg="light" expand="lg" className="vw-100">
       <Container>
         <Navbar.Brand as={NavLink} to="/">
-          Baseball Cards Collectibles
+          Trading Card Collectibles
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ms-auto">
-            <Nav.Link as={NavLink} to="/collectibles">
-              Collectibles
+            <Nav.Link as={NavLink} to="/products">
+              Products
             </Nav.Link>
             {user.id !== null ? (
-              <Nav.Link as={NavLink} to="/logout">
-                Logout
-              </Nav.Link>
+              !user.isAdmin ? (
+                <Fragment>
+                  <Nav.Link as={NavLink} to="/logout">
+                    Logout
+                  </Nav.Link>
+                </Fragment>
+              ) : (
+                <Fragment>
+                  <Nav.Link as={NavLink} to="/register">
+                    All Products
+                  </Nav.Link>
+                  <Nav.Link as={NavLink} to="/login">
+                    Create Product
+                  </Nav.Link>
+                  <Nav.Link as={NavLink} to="/logout">
+                    Logout
+                  </Nav.Link>
+                </Fragment>
+              )
             ) : (
               <Fragment>
                 <Nav.Link as={NavLink} to="/register">
