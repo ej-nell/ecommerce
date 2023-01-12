@@ -1,10 +1,12 @@
 import { Row, Col, Card, Button, Container } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
 
 export default function AllProductsCard({ allProductsProp }) {
   const { _id, name, description, price, quantity } = allProductsProp;
 
+  const history = useNavigate();
   function archiveProduct(event) {
     event.preventDefault();
 
@@ -19,7 +21,12 @@ export default function AllProductsCard({ allProductsProp }) {
       .then((response) => response.json())
       .then((data) => {
         console.log(data);
-        Swal;
+        Swal.fire({
+          title: "Status updated successfully",
+          icon: "success",
+          text: "Thank you!",
+        });
+        history("/products");
       });
   }
 
