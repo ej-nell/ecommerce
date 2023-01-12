@@ -57,7 +57,7 @@ export default function Register() {
           Swal.fire({
             title: "Successfully registered!",
             icon: "success",
-            text: "Welcome to Zuitt Coding Website",
+            text: "Thank you for registering!",
           });
           <Navigate to="/" />;
 
@@ -68,7 +68,7 @@ export default function Register() {
   }
 
   return user.id !== null ? (
-    <Navigate to="/" />
+    <Navigate to="*" />
   ) : (
     <Container>
       <Row>

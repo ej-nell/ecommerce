@@ -8,7 +8,7 @@ export default function AppNavBar() {
   const { user } = useContext(UserContext);
 
   return (
-    <Navbar bg="light" expand="lg" className="vw-100">
+    <Navbar bg="info" expand="lg" className="vw-100 mb-5">
       <Container>
         <Navbar.Brand as={NavLink} to="/">
           Pristine Paper
@@ -20,20 +20,20 @@ export default function AppNavBar() {
               Products
             </Nav.Link>
             {user.id !== null ? (
-              !user.isAdmin ? (
+              user.isAdmin ? (
                 <Fragment>
+                  <Nav.Link as={NavLink} to="/allproducts">
+                    All Products
+                  </Nav.Link>
+                  <Nav.Link as={NavLink} to="/adminDashboard">
+                    Dashboard
+                  </Nav.Link>
                   <Nav.Link as={NavLink} to="/logout">
                     Logout
                   </Nav.Link>
                 </Fragment>
               ) : (
                 <Fragment>
-                  <Nav.Link as={NavLink} to="/register">
-                    All Products
-                  </Nav.Link>
-                  <Nav.Link as={NavLink} to="/login">
-                    Create Product
-                  </Nav.Link>
                   <Nav.Link as={NavLink} to="/logout">
                     Logout
                   </Nav.Link>

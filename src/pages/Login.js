@@ -72,7 +72,11 @@ export default function Login() {
   }
 
   return user.id !== null ? (
-    <Navigate to={"/"} />
+    user.isAdmin ? (
+      <Navigate to="/admindashboard" />
+    ) : (
+      <Navigate to={"/"} />
+    )
   ) : (
     <Container>
       <Row>

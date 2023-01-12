@@ -11,7 +11,15 @@ import Home from "./pages/Home";
 import Register from "./pages/Register";
 import Login from "./pages/Login";
 import Logout from "./pages/Logout";
+import Products from "./pages/Products";
+import ProductDetails from "./pages/ProductDetails";
 import PageNotFound from "./pages/PageNotFound";
+import AdminDashboard from "./pages/AdminDashboard";
+import AllProducts from "./pages/AllProducts";
+import CreateProduct from "./pages/CreateProduct";
+import Checkout from "./pages/Checkout";
+import CheckoutDetails from "./pages/CheckoutDetails";
+import UpdateProduct from "./pages/UpdateProduct";
 
 function App() {
   const [user, setUser] = useState({ id: null, isAdmin: false });
@@ -23,17 +31,17 @@ function App() {
     console.log(user);
   }, [user]);
 
-  // useEffect(() => {
-  //   fetch(`${process.env.REACT_APP_URI}/users/profile`, {
-  //     headers: {
-  //       Authorization: `Bearer ${localStorage.getItem("token")}`,
-  //     },
-  //   })
-  //     .then((response) => response.json())
-  //     .then((data) => {
-  //       setUser({ id: data._id, isAdmin: data.isAdmin });
-  //     });
-  // }, []);
+  useEffect(() => {
+    fetch(`${process.env.REACT_APP_URI}/users/profile`, {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        setUser({ id: data._id, isAdmin: data.isAdmin });
+      });
+  }, []);
 
   return (
     <UserProvider value={{ user, setUser, unSetUser }}>
@@ -41,9 +49,17 @@ function App() {
         <AppNavBar />
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/products" element={<Products />} />
+          <Route path="/products/:productId" element={<ProductDetails />} />
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
           <Route path="/logout" element={<Logout />} />
+          <Route path="/adminDashboard" element={<AdminDashboard />} />
+          <Route path="/allProducts" element={<AllProducts />} />
+          <Route path="/createProduct" element={<CreateProduct />} />
+          <Route path="/updateProduct/:productId" element={<UpdateProduct />} />
+          <Route path="/checkout" element={<Checkout />} />
+          <Route path="/checkout/:productId" element={<CheckoutDetails />} />
           <Route path="*" element={<PageNotFound />} />
         </Routes>
       </Router>
