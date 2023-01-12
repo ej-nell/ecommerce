@@ -59,16 +59,20 @@ export default function Register() {
             icon: "success",
             text: "Thank you for registering!",
           });
-          <Navigate to="/" />;
 
           localStorage.setItem("email", email);
           setUser(localStorage.getItem("email"));
+          <Navigate to="/products" />;
         }
       });
   }
 
   return user.id !== null ? (
-    <Navigate to="*" />
+    user.isAdmin ? (
+      <Navigate to="/adminDashboard" />
+    ) : (
+      <Navigate to="/"></Navigate>
+    )
   ) : (
     <Container>
       <Row>

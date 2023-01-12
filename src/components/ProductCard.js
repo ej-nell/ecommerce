@@ -26,7 +26,7 @@ export default function ProductCard({ productProp }) {
                 See details
               </Button>
               {user.id !== null ? (
-                user.isAdmin === false ? (
+                !user.isAdmin ? (
                   <Button
                     as={Link}
                     to={`/checkout/${_id}`}

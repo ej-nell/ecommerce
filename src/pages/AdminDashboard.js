@@ -8,9 +8,7 @@ import UserContext from "../UserContext";
 export default function AdminDashboard() {
   const { user } = useContext(UserContext);
 
-  return !user.isAdmin ? (
-    <Navigate to="*" />
-  ) : (
+  return (
     <Container>
       <h1>Admin Dashboard</h1>
       <Button

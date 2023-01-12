@@ -39,6 +39,7 @@ function App() {
     })
       .then((response) => response.json())
       .then((data) => {
+        console.log(data);
         setUser({ id: data._id, isAdmin: data.isAdmin });
       });
   }, []);
