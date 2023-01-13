@@ -16,7 +16,7 @@ export default function AdminDashboard() {
         to="/createProduct"
         variant="primary"
         type="submit"
-        className="bg-success border-light mt-3 mb-5"
+        className="bg-success border-light mt-2 mb-5"
       >
         Create New Product
       </Button>
